@@ -65,6 +65,12 @@ const Cart = () => {
 
 
                                             </select>
+
+                                            <button className="btn-primary  small ms-2   rounded " style={{height:"25px",fontSize:"small", fontWeight:"bold"}}>
+
+                                                        remove
+
+                                            </button>
                                         </span>
 
                                                 <br/>

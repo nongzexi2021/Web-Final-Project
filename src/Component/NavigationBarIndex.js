@@ -60,6 +60,11 @@ const NavigationBar = (
                     </select>
                 </li>
             </ul>
+
+            <div>
+                <img src="https://images.pexels.com/photos/429807/pexels-photo-429807.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                     style={{ objectFit: 'cover' }} height="300px" width="100%"/>
+            </div>
         </>
     );
 };

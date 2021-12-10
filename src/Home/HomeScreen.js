@@ -1,6 +1,6 @@
 import SignBar from "../SignBar/SignBar";
-import SearchBar from "../component/SearchBar";
-import NavigationBarIndex from "../component/NavigationBarIndex";
+import SearchBar from "../Component/SearchBar";
+import NavigationBarIndex from "../Component/NavigationBarIndex";
 
 const HomeScreen = () => {
     return(

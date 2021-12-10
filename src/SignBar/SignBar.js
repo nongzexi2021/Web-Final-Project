@@ -41,7 +41,7 @@ const SignBar = () => {
                         <span className='me-2'>
                             <i className="fas fa-bell "></i>
                         </span>
-                        <Link to="">
+                        <Link to="/ebay/cart">
                             <i className="fas fa-shopping-cart text-black "></i>
                         </Link>
 

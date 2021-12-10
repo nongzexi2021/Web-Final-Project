@@ -8,6 +8,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import DetailsScreen from "./Detail/DetailsScreen";
 import SignBar from "./SignBar/SignBar";
 import HomeScreen from "./Home/HomeScreen";
+import CartScreen from "./Cart/CartScreen";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 {/*<Route path="/:searchTerm" element={<SearchScreen/>}/>*/}
                 {/*<Route path="/details/:id" element={<DetailsScreen/>}/>*/}
                 <Route path = "/" element={<HomeScreen/>}/>
+                <Route path = "/ebay/cart" element={<CartScreen/>}/>
 
             </Routes>
 

@@ -2,11 +2,10 @@ import './App.css';
 import './vendors/bootstrap/css/bootstrap.min.css';
 import './vendors/fontawesome/css/all.min.css';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import HomeScreen from "./Home/HomeScreen";
+import HomeScreen from "./AllScreen/HomeScreen";
 import SellerScreen from "./SellerScreen";
 import Profile from './Profile/main';
 import EditProfile from './EditProfile/index';
-// import Product from "./Component/Product";
 import DetailProduct from "./Detail/DetailProduct";
 import {Provider} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
@@ -14,7 +13,8 @@ import cart from './reducer/cart';
 import addItems from "./reducer/addItems";
 import profile from './reducer/profile';
 import './profile.css'
-import Cart from "./Cart/Cart";
+import ProductsScreen from "./AllScreen/ProductsScreen";
+import CartScreen from "./AllScreen/CartScreen";
 
 
 const reducers = combineReducers({cart, addItems, profile});
@@ -26,15 +26,13 @@ function App() {
         <BrowserRouter>
             <Provider store={store}>
                 <Routes>
-                    {/*<Route path="/" element={<SearchScreen/>}/>*/}
-                    {/*<Route path="/:searchTerm" element={<SearchScreen/>}/>*/}
-                    {/*<Route path="/details/:id" element={<DetailsScreen/>}/>*/}
                     <Route path = "/" element={<HomeScreen/>}/>
                     <Route path = "/seller" element={<SellerScreen/>}/>
                     <Route path = "/products/:id" element={<DetailProduct/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/editProfile" element={<EditProfile/>}/>
-                    <Route path="/cart" element={<Cart/>}/>
+                    <Route path="/cart" element={<CartScreen/>}/>
+                    <Route path="/products" element={<ProductsScreen/>}/>
                 </Routes>
             </Provider>
         </BrowserRouter>

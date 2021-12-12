@@ -26,6 +26,11 @@ const SignBar = () => {
                             Sign up
                         </span>
                     </Link>
+                    <Link to="/products">
+                        <span className="ms-2">
+                            Products
+                        </span>
+                    </Link>
                 </div>
                 <div className=" col">
                     <span className="float-end">

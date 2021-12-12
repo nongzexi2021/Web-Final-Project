@@ -37,31 +37,32 @@ const EditItem = ({profile})=>{
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
-                                            <label htmlFor="fullName">Username</label>
+                                            <label htmlFor="username">Username</label>
                                             <input onChange={(event) =>
                                                 handleChange({...localProfile, username: event.target.value})}
-                                                type="text" className="form-control" id="fullName"
-                                                   placeholder="Username" value={localProfile.username}/>
+                                                type="text" className="form-control" id="username"
+                                                   placeholder="Username"
+                                                   value={localProfile.username}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
-                                            <label htmlFor="eMail">Name</label>
+                                            <label htmlFor="name">Name</label>
                                             <input onChange={(event) =>
                                                 handleChange({...localProfile, name: event.target.value})}
-                                                type="email" className="form-control" id="eMail"
+                                                type="text" className="form-control" id="name"
                                                    placeholder="Name"
                                                    value={localProfile.name}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div className="form-group">
-                                            <label htmlFor="phone">Email</label>
+                                            <label htmlFor="email">Email</label>
                                             <input onChange={(event) =>
                                                 handleChange({...localProfile, email: event.target.value})}
-                                                   type="text" className="form-control" id="phone"
+                                                   type="text" className="form-control" id="email"
                                                    placeholder="Email"
-                                                    value = {profile.email}/>
+                                                    value = {localProfile.email}/>
                                         </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -69,9 +70,9 @@ const EditItem = ({profile})=>{
                                             <label htmlFor="website">Phone</label>
                                             <input onChange={(event) =>
                                                 handleChange({...localProfile, phone: event.target.value})}
-                                                type="url" className="form-control" id="website"
+                                                type="text" className="form-control" id="phone"
                                                    placeholder="Phone Number"
-                                                   value = {profile.phone}/>
+                                                   value = {localProfile.phone}/>
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +85,7 @@ const EditItem = ({profile})=>{
                                             <label htmlFor="Street">Location</label>
                                             <input onChange={(event) =>
                                                 handleChange({...localProfile, location: event.target.value})}
-                                                   type="name" className="form-control" id="Street"
+                                                   type="text" className="form-control" id="location"
                                                    placeholder="Location"
                                             value = {localProfile.location}/>
                                         </div>

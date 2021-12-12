@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {addCart} from "./CartClient";
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 
 const Product = () => {
     const params = useParams();
@@ -37,9 +37,11 @@ const Product = () => {
                     <button className="btn btn-outline-dark" onClick={()=>addProduct(product)}>
                         Add to Cart
                     </button>
-                    <button className="btn btn-dark">
-                        Go to Cart
-                    </button>
+                    <Link to="/cart">
+                        <button className="btn btn-dark">
+                            Go to Cart
+                        </button>
+                    </Link>
                 </div>
             </>
         )

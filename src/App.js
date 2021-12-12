@@ -14,6 +14,7 @@ import cart from './reducer/cart';
 import addItems from "./reducer/addItems";
 import profile from './reducer/profile';
 import './profile.css'
+import Cart from "./Cart/Cart";
 
 
 const reducers = combineReducers({cart, addItems, profile});
@@ -33,6 +34,7 @@ function App() {
                     <Route path = "/products/:id" element={<DetailProduct/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/editProfile" element={<EditProfile/>}/>
+                    <Route path="/cart" element={<Cart/>}/>
                 </Routes>
             </Provider>
         </BrowserRouter>

@@ -4,6 +4,11 @@ import {useSelector} from "react-redux";
 
 const SignBar = () => {
     const state = useSelector((state)=>state.cart);
+    let initial = 0;
+    for(let i=0; i < state.length; i++) {
+        initial += state[i].qty;
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -43,12 +48,9 @@ const SignBar = () => {
                         <span className='me-2'>
                             <i className="fas fa-bell "></i>
                         </span>
-                        <Link to="">
-                            <i className="fas fa-shopping-cart text-black "></i> cart({state.length})
+                        <Link to="/cart">
+                            <i className="fas fa-shopping-cart text-black "></i> cart({initial})
                         </Link>
-
-
-
                     </span>
                 </div>
             </div>

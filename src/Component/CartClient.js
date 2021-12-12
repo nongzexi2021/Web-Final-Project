@@ -1,4 +1,5 @@
 export const addCart = (product) => {
+    console.log(product)
     return {
         type:'add',
         product

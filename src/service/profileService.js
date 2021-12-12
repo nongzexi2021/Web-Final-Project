@@ -1,4 +1,4 @@
-let PROFILE_API = process.env.PORT? 'https://web-deb-node.herokuapp.com/api/profile': 'http://localhost:4000/api/profile'
+let PROFILE_API = process.env.PORT ? 'https://web-deb-node.herokuapp.com/api/profile': 'http://localhost:4000/api/profile'
 
 
 export const getCurrentProfile = (dispatch) =>

@@ -13,7 +13,7 @@ const SearchBar = () => {
                 <tr>
                     <td style={{ verticalAlign: 'middle' }}>
                         <img style={{ width: '150px', marginRight: '20px', marginLeft: '20px' }}
-                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EBay_logo.svg/2560px-EBay_logo.svg.png"/>
+                             src="https://icons-for-free.com/iconfiles/png/512/cat-131996349058051117.png"/>
                     </td>
 
                     <td style={{ width: '30px', verticalAlign: 'middle' }}>

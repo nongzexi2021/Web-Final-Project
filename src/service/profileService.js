@@ -1,4 +1,5 @@
-let PROFILE_API = process.env.PORT ? 'https://web-deb-node.herokuapp.com/api/profile': 'http://localhost:4000/api/profile'
+let PROFILE_API = process.env.PORT ? 'https://web-deb-node.herokuapp.com/api/profile':
+    'http://localhost:4000/api/profile'
 
 
 export const getCurrentProfile = (dispatch) =>
@@ -12,7 +13,7 @@ export const getCurrentProfile = (dispatch) =>
         );
 
 export const updateCurrentProfile = (dispatch, profile) =>
-    fetch(`${PROFILE_API}`, {
+    fetch(`${PROFILE_API}/${profile._id}`, {
         method: 'PUT',
         body: JSON.stringify(profile),
         headers: {

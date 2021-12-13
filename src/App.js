@@ -15,7 +15,7 @@ import profile from './reducer/profile';
 import './profile.css'
 import ProductsScreen from "./AllScreen/ProductsScreen";
 import CartScreen from "./AllScreen/CartScreen";
-
+import PublicProfile from "./PublicProfile/index";
 
 const reducers = combineReducers({cart, addItems, profile});
 const store = createStore(reducers);
@@ -33,6 +33,7 @@ function App() {
                     <Route path="/editProfile" element={<EditProfile/>}/>
                     <Route path="/cart" element={<CartScreen/>}/>
                     <Route path="/products" element={<ProductsScreen/>}/>
+                    <Route path = "/profile/:id" element = {<PublicProfile/>}/>
                 </Routes>
             </Provider>
         </BrowserRouter>

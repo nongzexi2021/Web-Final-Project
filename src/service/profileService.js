@@ -24,3 +24,4 @@ export const updateCurrentProfile = (dispatch, profile) =>
                 type: 'edit-profile',
                 profile
             }));
+

@@ -25,9 +25,9 @@ const Profile = ({profile}) => {
                                 <h6>
                                     {profile.identity}
                                 </h6>
-                                <p className="proile-rating">Selled: <span>{profile.selled}</span></p>
-                                <p className="proile-rating">Bought: <span>{profile.bought}</span></p>
-                                <p className="proile-rating">Comment: <span>{profile.comment}</span></p>
+                                <p className="proile-rating ">Selled: <span><a href="">{profile.selled}</a></span></p>
+                                <p className="proile-rating">Bought: <span><a href="">{profile.bought}</a></span></p>
+                                <p className="proile-rating">Comment: <span><a href="">{profile.comment}</a></span></p>
                             </div>
                         </div>
                         <div className="col-md-2">
@@ -41,7 +41,7 @@ const Profile = ({profile}) => {
                         <div className="col-md-4">
                             <div className="profile-work">
                                 <p>Selling item</p>
-                                <a href="">Selling item 1</a><br/>
+                                <a href="" className="boxhead a">Selling item 1</a><br/>
                                 <a href="">Selling item 2</a><br/>
                                 <a href="">Selling item 3</a>
                             </div>

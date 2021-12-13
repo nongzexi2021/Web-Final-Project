@@ -28,6 +28,7 @@ const Profile = ({profile}) => {
                                 <p className="proile-rating ">Selled: <span><a href="">{profile.selled}</a></span></p>
                                 <p className="proile-rating">Bought: <span><a href="">{profile.bought}</a></span></p>
                                 <p className="proile-rating">Comment: <span><a href="">{profile.comment}</a></span></p>
+                                <p className="proile-rating">Most recent comment: <span>a*****h: Item good/bad/ok balabala...</span></p>
                             </div>
                         </div>
                         <div className="col-md-2">

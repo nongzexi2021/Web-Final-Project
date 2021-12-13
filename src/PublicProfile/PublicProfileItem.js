@@ -24,6 +24,7 @@ const PublicProfile = ({profile}) => {
                                 <p className="proile-rating">Selled: <span>{profile.selled}</span></p>
                                 <p className="proile-rating">Bought: <span>{profile.bought}</span></p>
                                 <p className="proile-rating">Comment: <span>{profile.comment}</span></p>
+                                <p className="proile-rating">Most recent comment: <span>a*****h: Item good/bad/ok balabala...</span></p>
                             </div>
                         </div>
                         <div className="col-md-2">

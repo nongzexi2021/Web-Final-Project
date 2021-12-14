@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 
+
 const SignBar = () => {
     const state = useSelector((state)=>state.cart);
     let initial = 0;
@@ -9,25 +10,28 @@ const SignBar = () => {
         initial += state[i].qty;
     }
 
+
     return (
         <div className="container">
             <div className="row">
 
                 <div className="col-3">
                             Hi
-                    <Link to="">
-                        <span className="ms-2 me-2">
-                            Sign
-                        </span>
+
+                    <Link to="/login">
+                        <button className="badge rounded-pill bg-primary">
+                            Log in
+                        </button>
                     </Link>
+
                              or
-                    <Link to="">
-                        <span className="ms-2">
+                    <Link to="/register">
+                        <button className="badge rounded-pill bg-primary">
                             Sign up
-                        </span>
+                        </button>
                     </Link>
-                    <Link to="/products">
-                        <span className="ms-2">
+                    <Link to="/products"  className="btn btn-outline-dark">
+                        <span>
                             Products
                         </span>
                     </Link>

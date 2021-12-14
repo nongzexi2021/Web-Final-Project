@@ -16,6 +16,8 @@ import './profile.css'
 import ProductsScreen from "./AllScreen/ProductsScreen";
 import CartScreen from "./AllScreen/CartScreen";
 import PublicProfile from "./PublicProfile/index";
+import LoginScreen from './LogIn/LoginScreen'
+import Register from './LogIn/Register'
 
 const reducers = combineReducers({cart, addItems, profile});
 const store = createStore(reducers);
@@ -34,6 +36,9 @@ function App() {
                     <Route path="/cart" element={<CartScreen/>}/>
                     <Route path="/products" element={<ProductsScreen/>}/>
                     <Route path = "/profile/:id" element = {<PublicProfile/>}/>
+                    <Route path = "/login" element = {<LoginScreen/>}/>
+                    <Route path = "/register" element = {<Register/>}/>
+
                 </Routes>
             </Provider>
         </BrowserRouter>

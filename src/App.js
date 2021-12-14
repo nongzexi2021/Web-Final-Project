@@ -18,8 +18,11 @@ import CartScreen from "./AllScreen/CartScreen";
 import PublicProfile from "./PublicProfile/index";
 import LoginScreen from './LogIn/LoginScreen'
 import Register from './LogIn/Register'
+import ProfileX from './LogIn/Profile'
+import seller from './reducer/seller'
+import CreateProduct from './SellerScreen/CreateNewProduct/createNewScreen';
 
-const reducers = combineReducers({cart, addItems, profile});
+const reducers = combineReducers({cart, addItems, profile, seller});
 const store = createStore(reducers);
 
 
@@ -38,6 +41,8 @@ function App() {
                     <Route path = "/profile/:id" element = {<PublicProfile/>}/>
                     <Route path = "/login" element = {<LoginScreen/>}/>
                     <Route path = "/register" element = {<Register/>}/>
+                    <Route path = "/x" element = {<ProfileX/>}/>
+                    <Route path = "/create" element={<CreateProduct/>}/>
 
                 </Routes>
             </Provider>

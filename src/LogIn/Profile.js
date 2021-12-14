@@ -1,14 +1,14 @@
 import {useEffect, useState} from "react";
 
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 
 const API_URL = 'http://localhost:4000'
 
-const Profile = () => {
+const ProfileX = () => {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
     const getProfile = () => {
-        fetch(`${API_URL}/profile`, {
+        fetch(`${API_URL}/api/profile`, {
             method: 'POST',
             credentials: 'include'
         }).then(res => res.json())
@@ -17,7 +17,7 @@ const Profile = () => {
             }).catch(e => navigate('/login'));
     }
     const logout = () => {
-        fetch(`${API_URL}/logout`, {
+        fetch(`${API_URL}/api/logout`, {
             method: 'POST',
             credentials: 'include'
         }).then(res => navigate('/'));
@@ -39,4 +39,4 @@ const Profile = () => {
         </div>
     );
 };
-export default Profile;
+export default ProfileX;

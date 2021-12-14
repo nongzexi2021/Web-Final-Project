@@ -1,49 +1,67 @@
-import React from "react";
+import React from 'react'
 import { useEffect, useState } from 'react'
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom'
+import { createStore } from 'redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProfile } from '../service/getUserService'
 
+
+// const SELLER_API = 'http://localhost:4000/api/profile'
 const SellerList = () => {
-    const[results,setResults] = useState([]);
-    const findProduct = () =>
-        fetch(`https://www.omdbapi.com/?s=star&apikey=73e6a391`).then(res=>res.json())
-            .then(results=>setResults(results.Search))
-    useEffect(findProduct,[]);
-    return(
+
+    // const [user, setUser] = useState({})
+    // const navigate = useNavigate()
+    //
+    // const getProfile = () => {
+    //     fetch(SELLER_API, {
+    //         method: 'POST',
+    //         credentials: 'include'
+    //     }).then(res => res.json())
+    //         .then(user => {
+    //             setUser(user)
+    //         }).catch(e => navigate('/login'))
+    // }
+    // useEffect(getProfile, [])
+
+    const getSellers = (state) => state.seller.user;
+    const user = useSelector(getSellers);
+    const dispatch = useDispatch();
+
+    useEffect(() => getProfile(dispatch), [])
+    console.log(user, "=============this is user");
+    return (
         <>
-            <div>
-                <img src='https://media.wired.com/photos/5f2d7c2191d87e6680b80936/4:3/w_2132,h_1599,c_limit/Science_climatedesk_453801484.jpg'
-                     style={{objectFit:'cover'}} width='100%' height={200}/>
-            </div>
+                <div className="row mt-2">
 
-            <div className="mt-1">
-                <span style={{fontWeight:"bold"}}>Store: 965 HotPot City</span>
-            </div>
-            <div className="mt-1">
-                <span style={{fontWeight:"bold"}}>Rating  </span>
-                <i className="far fa-star"></i><i className="far fa-star"></i><i className="far fa-star"></i><i
-                    className="far fa-star"></i><i className="far fa-star"></i>
-            </div>
-            <div  className="row mt-2">
-                {
-                    results.map(result =>
-                        <div key={result.imdbID} className="col-3 ">
-                            <img src = {result.Poster} height={100} className="img-fluid product-display-img"/>
-                            {/*{result.Poster}*/}
-                            <br/>
-                            <div className="row">
-                                <span className="col-3">Stock</span>
-                                <span className="col-3">
-                                    <i className="far fa-plus-square"></i>   <i className="far fa-minus-square"></i></span>
-                                <input style={{width:"50px"}} className="col-6 inputAmount" placeholder="10"/>
-                            </div>
-                        </div>)
-                }
-            </div>
-
+                    {
+                        user.asSeller && user.asSeller.map((product,index) => {
+                            return (
+                                    <div className="col-md-3 mb-4 ps-0" key={index}>
+                                        <div className="card h-100 text-center p-4" key={product._id}>
+                                            <img className="card-img-top" src={product.image}
+                                                 alt={product.title} height="200px"/>
+                                            <div className="card-body">
+                                                <h5 className="card-title mb-0">{product.title.substring(0, 8)}...</h5>
+                                                <p className="card-text lead fw-bolder">
+                                                    ${product.price}
+                                                </p>
+                                                <p className="card-text lead fw-light">
+                                                    Stock : {product.stock}
+                                                </p>
+                                                <Link to={`/editproducts/${product._id}`}
+                                                      className="btn btn-outline-dark">Edit Product</Link>
+                                                <button className="btn btn-outline-danger mt-1">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            )
+                        })
+                    }
+                </div>
 
         </>
     )
 }
 
-export default SellerList;
+export default SellerList
 

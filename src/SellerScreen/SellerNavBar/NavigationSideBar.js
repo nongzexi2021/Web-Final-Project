@@ -8,38 +8,42 @@ const NavigationSidebar = (
 
     return (
         <>
-            <div className="list-group">
-                <Link to="/" className={`list-group-item
-            ${active === 'Your Store' ? 'active' : ''} border border-secondary`}>
-                    <span className="d-none d-xl-inline">Your Store</span>
+            <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-light" style={{width:"280px"}}>
+                <Link to="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <span className="fs-4 ms-2">Home</span>
                 </Link>
-
-                <Link to="/" className={`list-group-item
-            ${active === 'Stock' ? 'active' : ''} border border-secondary`}>
-                    <span className="d-none d-xl-inline">Stock</span>
-                </Link>
-
-                <Link to="/" className={`list-group-item
-            ${active === 'order' ? 'active' : ''} border border-secondary`}>
-                    <span className="d-none d-xl-inline">Order</span>
-                </Link>
-
-                <Link to="/a6/twitter/notification" className={`list-group-item
-            ${active === 'Message' ? 'active' : ''} border border-secondary`}>
-                    <span className="d-none d-xl-inline">Message</span>
-                </Link>
-
-                <Link to="/a6/twitter/message" className={`list-group-item
-            ${active === 'Privacy' ? 'active' : ''} border border-secondary`}>
-                    <span className="d-none d-xl-inline">Privacy</span>
-                </Link>
-
-                <Link to="/a6/twitter/bookmark" className={`list-group-item
-            ${active === 'Support' ? 'active' : ''} border border-secondary`}>
-                    <span className="d-none d-xl-inline">Support</span>
-                </Link>
+                <hr style={{color:"black"}}/>
+                <ul className="nav nav-pills flex-column mb-auto mt-0">
+                    <li className="nav-item">
+                        <Link to="/profile" className="nav-link link-dark">
+                            <span><i className="fas fa-user-circle"></i> Profile</span>
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/stock" className="nav-link active">
+                            <span><i className="fas fa-boxes"></i> Inventory</span>
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/profile" className="nav-link link-dark">
+                            <span><i className="fas fa-folder-plus"></i> Order</span>
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/profile" className="nav-link link-dark">
+                            <span><i className="fas fa-phone-square-alt"></i> Support</span>
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/profile" className="nav-link link-dark">
+                            <span><i className="fas fa-user-secret"></i> Privacy</span>
+                        </Link>
+                    </li>
+                </ul>
             </div>
-
+            <div className="container">
+                <Link to="/create" className="btn btn-outline-dark" style={{width:"250px"}}>New Product</Link>
+            </div>
         </>
     );
 }

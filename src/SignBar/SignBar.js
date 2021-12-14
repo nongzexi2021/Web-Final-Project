@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
+import Welcome from './Welcome'
 
 
 const SignBar = () => {
@@ -14,30 +15,24 @@ const SignBar = () => {
     return (
         <div className="container">
             <div className="row">
+                <div className="col">
+                    <Welcome/>
 
-                <div className="col-3">
-                            Hi
-
-                    <Link to="/login">
-                        <button className="badge rounded-pill bg-primary">
-                            Log in
-                        </button>
-                    </Link>
-
-                             or
-                    <Link to="/register">
-                        <button className="badge rounded-pill bg-primary">
-                            Sign up
-                        </button>
-                    </Link>
-                    <Link to="/products"  className="btn btn-outline-dark">
+                    <Link to="/products"  className="btn btn-outline-dark float-end">
                         <span>
                             Products
                         </span>
                     </Link>
                 </div>
+
                 <div className=" col">
                     <span className="float-end">
+                        <Link to="/register">
+                        <button className="badge rounded-pill bg-primary">
+                            Sign up
+                        </button>
+                    </Link>
+
                         <button className="badge rounded-pill bg-primary me-3">
                                      Sell
                         </button>

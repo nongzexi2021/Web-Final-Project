@@ -1,10 +1,9 @@
-import SignBar from "../SignBar/SignBar";
-import SearchBar from "../Component/SearchBar";
-import NavigationSidebar from "./SellerNavBar/NavigationSideBar";
-import SellerList from "./SellerList";
-import './SellerScreen.css';
+import SignBar from "../../SignBar/SignBar";
+import SearchBar from "../../Component/SearchBar";
+import NavigationSidebar from "../SellerNavBar/NavigationSideBar";
+import EditProduct from "./editProduct";
 
-const SellerScreen = () => {
+const EditProductScreen = () => {
     return(
         <>
             <SignBar/>
@@ -14,12 +13,11 @@ const SellerScreen = () => {
                     <NavigationSidebar/>
                 </div>
                 <div className="col-8">
-                    <SellerList/>
+                    <EditProduct/>
                 </div>
             </div>
-
         </>
     )
 };
 
-export default SellerScreen;
+export default EditProductScreen;

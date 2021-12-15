@@ -21,7 +21,7 @@ import Register from './LogIn/Register'
 import ProfileX from './LogIn/Profile'
 import seller from './reducer/seller'
 import CreateProduct from './SellerScreen/CreateNewProduct/createNewScreen';
-
+import Privacy from "./Privacy";
 const reducers = combineReducers({cart, addItems, profile, seller});
 const store = createStore(reducers);
 
@@ -43,7 +43,7 @@ function App() {
                     <Route path = "/register" element = {<Register/>}/>
                     <Route path = "/x" element = {<ProfileX/>}/>
                     <Route path = "/create" element={<CreateProduct/>}/>
-
+                    <Route path = "/privacy" element = {<Privacy/>}/>
                 </Routes>
             </Provider>
         </BrowserRouter>

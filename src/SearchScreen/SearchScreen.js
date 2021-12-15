@@ -1,41 +1,57 @@
 import React from "react";
 import {useState,useEffect} from "react";
-import {Link,  useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate,useParams} from "react-router-dom";
 
 
 const SearchScreen = ()=>{
     const params = useParams();
-    const navigate = useNavigate();
-    const movieTitle = params.searchTerm || 'batman'
-    const[searchTerm,setSearchTerm] = useState(movieTitle);
+    const productTitle= params.searchTerm;
+    const[searchTerm,setSearchTerm] = useState(productTitle);
     const[results,setResults] = useState([]);
-    const findMovies = () =>
+    const navigate = useNavigate();
+
+    const findProduct = () =>
         navigate(`/${searchTerm}`)
-        fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=73e6a391`).then(res=>res.json())
-        .then(results=>setResults(results.Search))
-    useEffect(findMovies,[]);
+        fetch(`https://fakestoreapi.com/products/category/${searchTerm}`)
+            .then(res => res.json())
+            .then(results=>setResults(results))
+
+    useEffect(findProduct,[]);
     return(
         <div>
-            <h1>
+            <img style={{ width: '80px', marginRight: '20px', marginLeft: '20px' }}
+                 src="https://icons-for-free.com/iconfiles/png/512/cat-131996349058051117.png"/>
+            <h1 className='d-flex justify-content-center'>
                 Search Screen
             </h1>
-            <input onChange={(e) => setSearchTerm(e.target.value)} value = {searchTerm}/>
-            <button onClick={findMovies}>Search</button>
-            {JSON.stringify(params)}
-            {searchTerm}
+            <div className='d-flex justify-content-center'>
 
-                <ul>
-                    {
-                        results.map(result =>
-                        <li key={result.imdbID}>
-                            <Link to={`/details/${result.imdbID}`}>
-                            <img src = {result.Poster} height={100}/>
-                            {/*{result.Poster}*/}
-                            {result.Title}
-                            </Link>
-                        </li>)
-                    }
-                </ul>
+
+
+                <input onChange={(e) => setSearchTerm(e.target.value)} value = {searchTerm}/>
+                <button onClick={findProduct}>Search</button>
+            </div>
+
+
+            <div className='list-group mt-2'>
+                {
+                    results.map(result =>
+                        <list className='list-group-item' key={result.id}>
+
+                            <div className='row'>
+                                <div className='col-6 d-flex justify-content-center'>
+                                    <img src = {result.image} height={100}/>
+                                </div>
+                                <div className='col-6 float-end'>
+                                    <Link to={`/product/${result.id}`}>
+                                        {result.title}
+                                    </Link>
+                                </div>
+                            </div>
+
+                        </list>)
+                }
+            </div>
 
         </div>
     )

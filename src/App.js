@@ -21,7 +21,9 @@ import Register from './LogIn/Register'
 import ProfileX from './LogIn/Profile'
 import seller from './reducer/seller'
 import CreateProduct from './SellerScreen/CreateNewProduct/createNewScreen';
-import Privacy from "./Privacy";
+import EditProductScreen from './SellerScreen/EditProduct/editProductScreen'
+import SearchScreen from './SearchScreen/SearchScreen'
+
 const reducers = combineReducers({cart, addItems, profile, seller});
 const store = createStore(reducers);
 
@@ -32,6 +34,7 @@ function App() {
             <Provider store={store}>
                 <Routes>
                     <Route path = "/" element={<HomeScreen/>}/>
+                    <Route path = "/home" element={<HomeScreen/>}/>
                     <Route path = "/seller" element={<SellerScreen/>}/>
                     <Route path = "/products/:id" element={<DetailProduct/>}/>
                     <Route path="/profile" element={<Profile/>}/>
@@ -43,7 +46,9 @@ function App() {
                     <Route path = "/register" element = {<Register/>}/>
                     <Route path = "/x" element = {<ProfileX/>}/>
                     <Route path = "/create" element={<CreateProduct/>}/>
-                    <Route path = "/privacy" element = {<Privacy/>}/>
+                    <Route path = "/editproducts/:id" element={<EditProductScreen/>}/>
+                    <Route path = "/search" element = {<SearchScreen/>}/>
+                    <Route path = "/search/:searchTerm" element = {<SearchScreen/>}/>
                 </Routes>
             </Provider>
         </BrowserRouter>

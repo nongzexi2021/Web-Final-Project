@@ -12,6 +12,9 @@ const seller = (state = initialState, action) =>{
         case "create-new-product":
             state = { user:  { ...state.user , ...action.user} }
             return state
+        case "update-product":
+            state = { user:  { ...state.user , ...action.user} }
+            return state
         default:
             return(state);
     }

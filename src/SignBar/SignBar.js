@@ -55,6 +55,16 @@ const SignBar = () => {
                         <Link to="/cart">
                             <i className="fas fa-shopping-cart text-black "></i> cart({initial})
                         </Link>
+
+
+                        <Link to="/home">
+                            <i className="fas fa-home text-black"></i> Home
+                        </Link>
+
+                        <Link to="/profile">
+                            <i className="fas fa-user-alt text-black"></i> Profile
+                        </Link>
+
                     </span>
                 </div>
             </div>

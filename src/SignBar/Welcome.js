@@ -14,7 +14,10 @@ const Welcome = () => {
         }).then(res => res.json())
             .then(user => {
                 setUser(user)
-            }).catch(e => navigate('/login'))
+            }).catch(e => {
+                console.log("未登录")
+                // navigate('/login')
+            })
     }
     const logout = () => {
         fetch(`${API_URL}/api/logout`, {

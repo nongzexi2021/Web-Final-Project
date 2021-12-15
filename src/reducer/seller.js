@@ -15,6 +15,8 @@ const seller = (state = initialState, action) =>{
         case "update-product":
             state = { user:  { ...state.user , ...action.user} }
             return state
+        case "delete-product":
+            state = { user:  { ...state.user , ...action.user} }
         default:
             return(state);
     }

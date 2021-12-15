@@ -32,10 +32,16 @@ const SignBar = () => {
                             Sign up
                         </button>
                     </Link>
-
-                        <button className="badge rounded-pill bg-primary me-3">
-                                     Sell
-                        </button>
+                        <Link to = "/seller">
+                            <button className="badge rounded-pill bg-primary ms-1 me-1">
+                                         Sell
+                            </button>
+                        </Link>
+                        <Link to = '/home'>
+                            <button className="badge rounded-pill bg-primary me-1">
+                                         Buyer
+                            </button>
+                        </Link>
 
                         <Link to="">
                             <span className="me-2 text-black ">

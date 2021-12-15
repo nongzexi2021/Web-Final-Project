@@ -5,23 +5,7 @@ import { createStore } from 'redux'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfile } from '../service/getUserService'
 
-
-// const SELLER_API = 'http://localhost:4000/api/profile'
 const SellerList = () => {
-
-    // const [user, setUser] = useState({})
-    // const navigate = useNavigate()
-    //
-    // const getProfile = () => {
-    //     fetch(SELLER_API, {
-    //         method: 'POST',
-    //         credentials: 'include'
-    //     }).then(res => res.json())
-    //         .then(user => {
-    //             setUser(user)
-    //         }).catch(e => navigate('/login'))
-    // }
-    // useEffect(getProfile, [])
 
     const getSellers = (state) => state.seller.user;
     const user = useSelector(getSellers);
@@ -50,7 +34,7 @@ const SellerList = () => {
                                                 </p>
                                                 <Link to={`/editproducts/${product._id}`}
                                                       className="btn btn-outline-dark">Edit Product</Link>
-                                                <button className="btn btn-outline-danger mt-1">Delete</button>
+                                                <Link to={`/deleteproduct/${product._id}`} className="btn btn-outline-danger mt-1">Delete</Link>
                                             </div>
                                         </div>
                                     </div>

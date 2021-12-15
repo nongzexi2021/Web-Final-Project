@@ -8,7 +8,9 @@ const Login = () => {
     const navigate = useNavigate()
 
     const [user, setUser] = useState({})
-    const login = () => {
+
+
+    const buyerLogin = () => {
         fetch(`${API_URL}/api/login`, {
             method: 'POST',
             body: JSON.stringify(user),
@@ -18,10 +20,28 @@ const Login = () => {
             }
         }).then(res=> res.json())
             .then(json => {
-                navigate("/")
-        })
+
+                navigate("/home")
+            })
             .catch(() => {})
     }
+
+    const sellerLogin = () => {
+        fetch(`${API_URL}/api/login`, {
+            method: 'POST',
+            body: JSON.stringify(user),
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(res=> res.json())
+            .then(json => {
+
+                navigate("/seller")
+            })
+            .catch(() => {})
+    }
+
     return (
         <div className="container d-flex">
             <div className="row w-100 justify-content-center">
@@ -39,9 +59,14 @@ const Login = () => {
                         type="password"
                         className="form-control my-3"/>
                     <button
-                        className="btn btn-primary float-end"
-                        onClick={login}>
-                        Login
+                        className="btn btn-outline-primary float-end "
+                        onClick={buyerLogin}>
+                        Buyer Login
+                    </button>
+                    <button
+                        className="btn  btn-outline-dark float-end"
+                        onClick={sellerLogin}>
+                        Seller Login
                     </button>
                 </div>
             </div>

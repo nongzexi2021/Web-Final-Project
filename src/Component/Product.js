@@ -1,22 +1,89 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from "react-redux";
-import {addCart} from "./CartClient";
-import {Link, useParams} from 'react-router-dom';
-
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { addCart, addToDB } from './CartClient'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 const Product = () => {
-    const params = useParams();
-    const[product, setProduct] = useState([]);
+
+    const [user, setUser] = useState({})
+    const cart = useSelector((state) => state.cart)
+    const navigate = useNavigate()
+    const getUser = () => {
+        fetch(`http://localhost:4000/api/profile`, {
+            method: 'POST',
+            credentials: 'include'
+        }).then(res => res.json())
+            .then(user => {
+                setUser(user)
+                dispatch({
+                    type: 'put-to-order',
+                    user: user
+                })
+            }).catch(e => {
+            console.log('未登录 add to cart', user, !!user)
+            // navigate('/login')
+        })
+    }
+    useEffect(getUser, [])
+
+    const params = useParams()
+    const [product, setProduct] = useState([])
     const getProduct = () => {
         fetch(`https://fakestoreapi.com/products/${params.id}`)
             .then(res => res.json())
             .then(product => setProduct(product))
     }
+    useEffect(getProduct, [])
 
-    const dispatch = useDispatch();
-    const addProduct = (product) => {
-        dispatch(addCart(product));
+    console.log("===========", user);
+
+    const dispatch = useDispatch()
+
+    const addProductClickHandler = (product, user) => {
+        console.log("This is userrrrrrr in addProductClickHandler", user);
+        if (user._id) {
+            let temp = []
+            let has = false
+            cart.forEach((x) => {
+                if (x.id === product.id) {
+                    temp.push({
+                        ...x,
+                        qty: (x.qty || 0) + 1
+                    })
+                    has = true
+                    return
+                }
+                temp.push(x)
+            });
+            if (!has) {
+                temp.push({ ...product, qty: 1})
+            }
+
+            dispatch(addCart(temp))
+            addDataToDb({...user, asBuyer: temp})
+        }
+        else {
+            console.log("Undefined user");
+            navigate('/login')
+        }
     }
-    useEffect(getProduct,[])
+
+    const addDataToDb = (user) => {
+        // const itemInCart = [...user.asBuyer, product];
+        // console.log("This is the item added to DB", itemInCart);
+        // const backUser = {...user,asBuyer: itemInCart};
+        // console.log("This is user who add things to cart", backUser);
+        addToDB(user, dispatch);
+    }
+
+    const goToCartClickHandler = () => {
+        if (user._id) {
+            navigate('/cart')
+        }
+        else {
+            navigate('/login')
+        }
+    }
+
     const ShowProduct = () => {
         return (
             <>
@@ -34,19 +101,22 @@ const Product = () => {
                         ${product.price}
                     </h3>
                     <p className="lead">{product.description}</p>
-                    <button className="btn btn-outline-dark" onClick={()=>addProduct(product)}>
+
+
+                    // guest cannot add to cart nor go to cart
+                    <button className="btn btn-outline-dark" onClick={() => addProductClickHandler(product, user)}>
                         Add to Cart
                     </button>
-                    <Link to="/cart">
-                        <button className="btn btn-dark">
+                    {/*<Link to="/cart">*/}
+                        <button className="btn btn-dark" onClick={() => goToCartClickHandler()}>
                             Go to Cart
                         </button>
-                    </Link>
+                    {/*</Link>*/}
                 </div>
             </>
         )
     }
-    return(
+    return (
         <div>
             <div className="container py-4">
                 <div className="row py-5">
@@ -57,4 +127,4 @@ const Product = () => {
     )
 }
 
-export default Product;
+export default Product

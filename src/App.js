@@ -9,8 +9,8 @@ import EditProfile from './EditProfile/index';
 import DetailProduct from "./Detail/DetailProduct";
 import {Provider} from 'react-redux';
 import {createStore, combineReducers} from 'redux';
-import cart from './reducer/cart';
 import addItems from "./reducer/addItems";
+import cart from "./reducer/cart";
 import profile from './reducer/profile';
 import './profile.css'
 import ProductsScreen from "./AllScreen/ProductsScreen";
@@ -23,6 +23,9 @@ import seller from './reducer/seller'
 import CreateProduct from './SellerScreen/CreateNewProduct/createNewScreen';
 import EditProductScreen from './SellerScreen/EditProduct/editProductScreen'
 import SearchScreen from './SearchScreen/SearchScreen'
+import DeleteScreen from './SellerScreen/DeleteVerification/DeleteScreen'
+import PrivacyPage from './PrivacyPage/PrivacyPage'
+import OrderPage from '../src/OrderPage/OrderPage'
 
 const reducers = combineReducers({cart, addItems, profile, seller});
 const store = createStore(reducers);
@@ -33,7 +36,7 @@ function App() {
         <BrowserRouter>
             <Provider store={store}>
                 <Routes>
-                    <Route path = "/" element={<HomeScreen/>}/>
+                    <Route path = "/" element={<PrivacyPage/>}/>
                     <Route path = "/home" element={<HomeScreen/>}/>
                     <Route path = "/seller" element={<SellerScreen/>}/>
                     <Route path = "/products/:id" element={<DetailProduct/>}/>
@@ -47,8 +50,12 @@ function App() {
                     <Route path = "/x" element = {<ProfileX/>}/>
                     <Route path = "/create" element={<CreateProduct/>}/>
                     <Route path = "/editproducts/:id" element={<EditProductScreen/>}/>
+                    <Route path = "/deleteproduct/:id" element={<DeleteScreen/>}/>
                     <Route path = "/search" element = {<SearchScreen/>}/>
                     <Route path = "/search/:searchTerm" element = {<SearchScreen/>}/>
+                    <Route path = "bye" element = {<bye/>}/>
+                    <Route path = "/ordered" element = {<OrderPage/>}/>
+
                 </Routes>
             </Provider>
         </BrowserRouter>

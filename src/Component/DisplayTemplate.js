@@ -8,7 +8,10 @@ const DisplayTemplate = () => {
         fetch(`https://fakestoreapi.com/products`).then(res=>res.json())
             .then(products=>setProducts(products))
             // .then(filter=>setFilter(products))
+
+
     useEffect(findProduct,[]);
+
     const filterProduct = (cat) => {
         const updatedList = products.filter((x) => x.category === cat);
         setFilter(updatedList);
@@ -37,7 +40,13 @@ const DisplayTemplate = () => {
                                             <p className="card-text lead fw-bolder">
                                                 ${product.price}
                                             </p>
-                                            <Link to={`/products/${product.id}`} className="btn btn-outline-dark">More</Link>
+
+
+                                            <Link to={`/products/${product.id}`}
+                                                  className="btn btn-outline-dark">
+                                                More
+                                            </Link>
+
                                         </div>
                                 </div>
                                 </div>

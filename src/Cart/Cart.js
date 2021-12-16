@@ -1,14 +1,81 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {delCart} from '../Component/CartClient';
-import {Link} from "react-router-dom";
+import {addCart, delCart, deleteProductFromUser} from '../Component/CartClient';
+import {Link, useNavigate, useParams} from "react-router-dom";
+import {addToDB} from "../Component/CartClient";
 
 const Cart = () => {
-    const state = useSelector((state) => state.cart)
+    //identify user
+    const [user, setUser] = useState({})
+    const products= useSelector((state) => state.cart)
+    const navigate = useNavigate()
+    const getUser = () => {
+        fetch(`http://localhost:4000/api/profile`, {
+            method: 'POST',
+            credentials: 'include'
+        }).then(res => res.json())
+            .then(user => {
+                setUser(user)
+                dispatch({
+                    type: 'put-to-order',
+                    user: user
+                })
+            }).catch(e => {
+            console.log('未登录 add to cart', user, !!user)
+            // navigate('/login')
+        })
+    }
+    useEffect(getUser, [])
+
     const dispatch = useDispatch()
 
-    const handleClose = (item) => {
-        dispatch(delCart(item))
+    console.log('ppppp',products);
+    const [ disable , setDisable ] = useState(false)
+    const deleteClickHandler = (product, user) => {
+        if (disable) return
+        setDisable(true)
+        console.log("This is the user in deleteClickHandler:", user);
+        console.log("This is the product that supposed to be deleted", product);
+        let delTemp = []
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].id === product.id) {
+                products[i].qty --;
+                console.log("products are:========", products);
+            }
+
+            if (products[i].qty <= 0) {
+                delTemp.push(i)
+            }
+        }
+        delTemp.forEach(i => { products.splice(i,1)})
+
+        console.log("00000)))", products)
+        delFromUser({...user, asBuyer: products}).then(() => {
+            setDisable(false)
+            dispatch(delCart(products))
+        }).catch(err=> setDisable(false))
+    }
+
+    const delFromUser = (user) => {
+        return deleteProductFromUser(user, dispatch)
+    }
+
+    const addDataToDb = (user) => {
+        addToDB(user, dispatch);
+    }
+    const addToOrder = (user) => {
+        let temp = [];
+        for (let i = 0; i < user.asBuyer.length; i++) {
+            temp.push(user.asBuyer[i]);
+        }
+        console.log("Temp array is:", temp);
+        addDataToDb({...user, order: temp});
+    }
+
+    const checkOutHandler = (user) => {
+        let temp = [];
+        addToOrder(user);
+        delFromUser({...user, asBuyer: temp});
     }
 
     const cartItems = (cartItem) => {
@@ -16,9 +83,7 @@ const Cart = () => {
             <div className="px-4 my-5 bg-light rounded-3" key={cartItem.id}>
                 <div className="container py-4">
 
-                    <button onClick={()=>handleClose(cartItem)} className="btn-close float-end" aria-label="Close"></button>
-
-
+                    <button disabled={disable} onClick={()=>deleteClickHandler(cartItem, user)} className="btn-close float-end" aria-label="Close"></button>
 
                     <div className="row justify-content-center">
                         <div className="col-md-4">
@@ -51,17 +116,19 @@ const Cart = () => {
         return (
             <div className="container">
                 <div className="row justify-content-center">
-                    <Link to = "/checkout" className="btn btn-outline-primary mb-5 w-25">Proceed To Checkout</Link>
+                    <button className="btn btn-outline-primary mb-5 w-25" onClick={()=>checkOutHandler(user)}>Proceed To Checkout</button>
                 </div>
             </div>
         )
     }
 
+    console.log("e902uq483u92ir93", products, typeof (products));
+
     return (
         <>
-            {state.length === 0 && emptyCart()}
-            {state.length !== 0 && state.map(cartItems)}
-            {state.length !== 0 && button()}
+            {products.length === 0 && emptyCart()}
+            {products.length !== 0 && products?.map(cartItems)}
+            {products.length !== 0 && button()}
         </>
     );
 }

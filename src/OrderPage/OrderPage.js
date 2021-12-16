@@ -1,6 +1,15 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 
+// let[order, setOrder] = useState([])
+//
+// const getOrders = () => {
+//     fetch(`http://localhost:4000/api/profile`)
+//         .then(res => res.json())
+//         .then(order => setOrder(order.asBuyer))
+//     }
+
+
 const OrderPage = () =>{
     let [comment, setComment] = useState("");
     console.log(comment, "comment")

@@ -68,10 +68,6 @@ const Product = () => {
     }
 
     const addDataToDb = (user) => {
-        // const itemInCart = [...user.asBuyer, product];
-        // console.log("This is the item added to DB", itemInCart);
-        // const backUser = {...user,asBuyer: itemInCart};
-        // console.log("This is user who add things to cart", backUser);
         addToDB(user, dispatch);
     }
 
@@ -83,6 +79,7 @@ const Product = () => {
             navigate('/login')
         }
     }
+
 
     const ShowProduct = () => {
         return (

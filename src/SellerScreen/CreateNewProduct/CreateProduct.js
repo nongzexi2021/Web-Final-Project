@@ -9,17 +9,7 @@ import { getProfile } from '../../service/getUserService'
 // const SELLER_API = 'http://localhost:4000/api/profile'
 
 const NewProduct = () => {
-    // const [user, setUser] = useState({})
-    // const navigate = useNavigate()
-    // const getProfile = () => {
-    //     fetch(SELLER_API, {
-    //         method: 'POST',
-    //         credentials: 'include'
-    //     }).then(res => res.json())
-    //         .then(user => {
-    //             setUser(user)
-    //         }).catch(e => navigate('/login'))
-    // }
+
     const dispatch = useDispatch();
     const user = useSelector(state => state.seller.user)
     useEffect(()=> getProfile(dispatch), [])

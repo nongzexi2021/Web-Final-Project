@@ -22,10 +22,11 @@ import ProfileX from './LogIn/Profile'
 import seller from './reducer/seller'
 import CreateProduct from './SellerScreen/CreateNewProduct/createNewScreen';
 import EditProductScreen from './SellerScreen/EditProduct/editProductScreen'
-import SearchScreen from './SearchScreen/SearchScreen'
+
 import DeleteScreen from './SellerScreen/DeleteVerification/DeleteScreen'
 import PrivacyPage from './PrivacyPage/PrivacyPage'
 import OrderPage from '../src/OrderPage/OrderPage'
+import SearchScreen from "./SearchScreen/SearchScreen";
 
 const reducers = combineReducers({cart, addItems, profile, seller});
 const store = createStore(reducers);
@@ -47,7 +48,7 @@ function App() {
                     <Route path = "/profile/:id" element = {<PublicProfile/>}/>
                     <Route path = "/login" element = {<LoginScreen/>}/>
                     <Route path = "/register" element = {<Register/>}/>
-                    <Route path = "/x" element = {<ProfileX/>}/>
+                    <Route path = "/x" element = {<ProfileX/>}/>npm
                     <Route path = "/create" element={<CreateProduct/>}/>
                     <Route path = "/editproducts/:id" element={<EditProductScreen/>}/>
                     <Route path = "/deleteproduct/:id" element={<DeleteScreen/>}/>

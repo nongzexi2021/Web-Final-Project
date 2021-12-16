@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addCart, delCart, deleteProductFromUser} from '../Component/CartClient';
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {addToDB} from "../Component/CartClient";
+import {addToDB,addtoorderbuyuser} from "../Component/CartClient";
 
 const Cart = () => {
     //identify user
@@ -16,6 +16,7 @@ const Cart = () => {
         }).then(res => res.json())
             .then(user => {
                 setUser(user)
+                
                 dispatch({
                     type: 'put-to-order',
                     user: user
@@ -69,7 +70,11 @@ const Cart = () => {
             temp.push(user.asBuyer[i]);
         }
         console.log("Temp array is:", temp);
-        addDataToDb({...user, order: temp});
+        addtoorderbuyuser({orderlist:temp,userid:user._id})
+        setTimeout(() => {
+            window.location.href = "/ordered"
+        }, 1000);
+        //addDataToDb({...user, order: temp});
     }
 
     const checkOutHandler = (user) => {

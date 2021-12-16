@@ -8,6 +8,21 @@ export const addCart = (product) => {
     }
 }
 
+export const addtoorderbuyuser = (data)=>{
+    fetch('http://localhost:4000/api/setorder', {
+        method: 'post',
+        body: JSON.stringify(data),
+        credentials: 'include',
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => {
+            console.log('This is response in CartClient.js:', response)
+            return response.json()
+        }).then(res => {
+    })
+}
 export const addToDB = (newUser, dispatch) => {
     console.log('***', newUser)
     fetch(SELLER_API, {

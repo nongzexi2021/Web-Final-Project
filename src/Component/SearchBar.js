@@ -39,6 +39,7 @@ const SearchBar = () => {
                         </select>
                     </td>
                     <td>
+
                         <button className="bg-primary text-white" style={{ height: '40px' }}>
                             Search
                         </button>
